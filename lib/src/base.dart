@@ -143,6 +143,12 @@ class FlutterWebviewPlugin {
     return res;
   }
 
+  /// Execute Javascript inside webview
+  Future<String> evalHtml(String html) async {
+    final res = await _channel.invokeMethod('evalHtml', {'html': html});
+    return res;
+  }
+
   /// Close the Webview
   /// Will trigger the [onDestroy] event
   Future close() => _channel.invokeMethod('close');

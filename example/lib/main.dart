@@ -201,14 +201,21 @@ class _MyHomePageState extends State<MyHomePage> {
           new RaisedButton(
             onPressed: () {
               final future =
-                  flutterWebviewPlugin.evalJavascript(_codeCtrl.text);
+              flutterWebviewPlugin.evalJavascript(_codeCtrl.text);
               future.then((String result) {
                 setState(() {
                   _history.add('eval: $result');
                 });
               });
             },
-            child: const Text('Eval some javascript'),
+            child: const Text('Eval some Javascript'),
+          ),
+          new RaisedButton(
+            onPressed: () {
+              flutterWebviewPlugin.evalHtml("<html><body><h1>YO</h1></body><html></html>");
+
+            },
+            child: const Text('Eval some HTML'),
           ),
           new RaisedButton(
             onPressed: () {

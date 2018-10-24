@@ -251,6 +251,13 @@ class WebviewManager {
             }
         });
     }
+
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    void evalHtml(MethodCall call, final MethodChannel.Result result) {
+        String html = call.argument("html");
+
+        webView.loadDataWithBaseURL(null,html,"text/html","utf-8", null);
+    }
     /** 
     * Reloads the Webview.
     */
